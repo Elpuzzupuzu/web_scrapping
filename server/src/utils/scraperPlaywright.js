@@ -1,28 +1,36 @@
+// scraperPlaywright.js
 import { chromium } from "playwright";
 
 export const runScraperPlaywright = async (robot) => {
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext();
-  const page = await context.newPage();
+  const page = await browser.newPage();
 
   try {
-    // Ir a la URL y esperar a que cargue todo el JS
-    await page.goto(robot.url, { waitUntil: "networkidle" });
+    await page.goto(robot.url, { waitUntil: "domcontentloaded" });
 
-    const results = {};
+    const scrapedData = {};
 
+    // Iterar sobre los selectores definidos en el robot
     for (const selector of robot.selectors) {
-      results[selector.field_name] = await page.$$eval(
-        selector.css_selector,
-        elements => elements.map(el => el.textContent.trim())
+      const { field_name, css_selector } = selector;
+
+      // Obtener elementos y extraer título y url si existen
+      const elements = await page.$$(css_selector);
+
+      scrapedData[field_name] = await Promise.all(
+        elements.map(async (el) => {
+          const titulo = await el.innerText();
+          const url = await el.getAttribute("href"); // puede ser null si no tiene href
+          return { titulo, url };
+        })
       );
     }
 
     await browser.close();
-    return results;
+    return scrapedData;
 
   } catch (error) {
     await browser.close();
-    throw new Error("Error scraping Playwright: " + error.message);
+    throw error;
   }
 };
