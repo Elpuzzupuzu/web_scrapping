@@ -1,8 +1,17 @@
 import { X, CheckCircle2 } from "lucide-react";
-// import styles from "../css/ExecutionModal.module.css";
+import styles from "../css/ExecutionModal.module.css";
 
 const ExecutionModal = ({ results, onClose }) => {
   if (!results) return null;
+
+  // ✅ Función para detectar imagen
+  const isImageUrl = (url) => {
+    return (
+      typeof url === "string" &&
+      (url.match(/\.(jpeg|jpg|gif|png|webp)$/i) ||
+        url.includes("media-amazon.com"))
+    );
+  };
 
   return (
     <div className={styles.overlay}>
@@ -26,25 +35,54 @@ const ExecutionModal = ({ results, onClose }) => {
               </tr>
             </thead>
             <tbody>
-              {results.map((item, index) => (
-                <tr key={index}>
-                  <td className={styles.fieldName}>{item.field_name}</td>
-                  <td className={styles.fieldValue}>
-                    {item.value.titulo}
-                    {item.value.url && (
-                      <a href={item.value.url} target="_blank" rel="noreferrer" className={styles.link}>
-                        Ver enlace
-                      </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
+              {results.map((item, index) => {
+                const imageUrl = item?.value?.url;
+
+                return (
+                  <tr key={index}>
+                    <td className={styles.fieldName}>
+                      {item.field_name}
+                    </td>
+
+                    <td className={styles.fieldValue}>
+                      {isImageUrl(imageUrl) ? (
+                        <div className={styles.imageContainer}>
+                          <img
+                            src={imageUrl}
+                            alt={item.field_name}
+                            className={styles.previewImage}
+                            style={{
+                              maxWidth: "100px",
+                              borderRadius: "4px",
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        item.value?.titulo
+                      )}
+
+                      {imageUrl && !isImageUrl(imageUrl) && (
+                        <a
+                          href={imageUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={styles.link}
+                        >
+                          Ver enlace
+                        </a>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
 
         <div className={styles.footer}>
-          <button onClick={onClose} className={styles.btnDone}>Cerrar</button>
+          <button onClick={onClose} className={styles.btnDone}>
+            Cerrar
+          </button>
         </div>
       </div>
     </div>

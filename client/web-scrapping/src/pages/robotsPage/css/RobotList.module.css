@@ -1,4 +1,4 @@
-/* RobotList.module.css */
+/* RobotList.module.css - Ajustado a Neutral/Carbón */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
 
@@ -20,7 +20,8 @@
 }
 
 .loaderIcon {
-  color: #3b82f6;
+  /* Cambio de azul a un gris plateado */
+  color: #94a3b8; 
   animation: spin 1s linear infinite;
 }
 
@@ -37,7 +38,7 @@
   padding: 12px 16px;
   background: rgba(239, 68, 68, 0.06);
   border: 1px solid rgba(239, 68, 68, 0.15);
-  borderRadius: 8px;
+  border-radius: 8px; /* Corregido CamelCase */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -47,8 +48,9 @@
 
 /* --- Table Card --- */
 .tableCard {
-  background: linear-gradient(160deg, #0f172a 0%, #0c1322 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  /* Cambio de azul marino a un gris carbón neutro */
+  background: linear-gradient(160deg, #1a1a1a 0%, #121212 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -70,14 +72,15 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #3b82f6;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  /* Cambio de azul a un verde esmeralda sutil para "estado activo" */
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
 }
 
 .headerTitle {
   font-size: 13px;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #94a3b8;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -85,7 +88,7 @@
 .headerCount {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
-  color: #475569;
+  color: #64748b;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 4px;
@@ -111,19 +114,19 @@
   padding: 11px 20px;
   font-size: 11px;
   font-weight: 600;
-  color: #475569;
+  color: #64748b;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .theadRow {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .robotRow {
   transition: background 0.15s ease;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .robotRow:first-child {
@@ -131,7 +134,7 @@
 }
 
 .robotRow:hover {
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .td {
@@ -143,14 +146,14 @@
 .robotName {
   font-size: 14px;
   font-weight: 500;
-  color: #e2e8f0;
+  color: #f1f5f9;
   line-height: 1.4;
 }
 
 .idTag {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
-  color: #334155;
+  color: #475569;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 3px;
@@ -170,7 +173,8 @@
 }
 
 .urlCell:hover {
-  color: #60a5fa;
+  /* Un blanco suave en lugar de azul brillante */
+  color: #cbd5e1;
 }
 
 .urlText {
@@ -189,9 +193,10 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
-  color: #60a5fa;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  /* Cambio de azul a un gris escala de grises premium */
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -210,7 +215,7 @@
 
 .manualBadge {
   font-size: 11px;
-  color: #334155;
+  color: #475569;
   font-style: italic;
 }
 
@@ -233,8 +238,9 @@
 }
 
 .deleteButton:hover {
-  color: #ef4444;
+  color: #f87171;
   background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 /* --- Empty State --- */
@@ -260,18 +266,19 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 4px;
+  color: #475569;
 }
 
 .emptyTitle {
   font-size: 15px;
   font-weight: 500;
-  color: #475569;
+  color: #64748b;
   margin: 0;
 }
 
 .emptySubtitle {
   font-size: 13px;
-  color: #334155;
+  color: #475569;
   margin: 0;
 }
 

@@ -5,7 +5,7 @@ export const executeRobot = createAsyncThunk(
   "executions/execute",
   async (robotId, thunkAPI) => {
     try {
-      const response = await api.get(`/execute/${robotId}/execute`);
+      const response = await api.get(`/execute/robots/${robotId}/execute`);
       return { robotId, results: response.data };
     } catch (error) {
       return thunkAPI.rejectWithValue(

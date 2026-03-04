@@ -1,0 +1,78 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  color: #10b981;
+  animation: spin 1s linear infinite;
+}
+
+.textWrapper {
+  text-align: center;
+}
+
+.mainText {
+  color: #f8fafc;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subText {
+  color: #64748b;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.progressTrack {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background: #10b981;
+  animation: indeterminateProgress 1.5s infinite ease-in-out;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes indeterminateProgress {
+  0% { left: -40%; }
+  100% { left: 110%; }
+}
